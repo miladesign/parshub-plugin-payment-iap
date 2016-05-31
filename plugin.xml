@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="parshub-plugin-payment-iap"
+    version="1.0.0">
+
+	<name>Parshub IAP plugin</name>
+    <description>Parshub IAP plugin</description>
+    <author>Milad Mohammadi</author>		
+    <license>MIT</license>
+    <keywords>parshub,plugin,payment,IAP</keywords>
+    <repo>https://github.com/miladesign/parshub-plugin-payment-iap</repo>
+    <issue>https://github.com/miladesign/parshub-plugin-payment-iap/issues</issue>
+	<engines>
+	    <engine name="cordova" version=">=3.0.0" />
+	</engines>
+	
+    <js-module src="www/iap.js" name="iap">
+        <clobbers target="window.iap" />
+    </js-module>
+    
+    <!-- android -->
+    <platform name="android">    
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="IAP" >
+				<param name="android-package" value="ir.parshub.miladesign.IAP"/>
+			</feature>
+	    </config-file>
+	    
+		<config-file target="AndroidManifest.xml" parent="/manifest">
+			<uses-permission android:name="net.jhoobin.jhub" />
+        </config-file>		
+		
+		<source-file src="src/android/IAP.java" target-dir="src/ir.parshub.miladesign"/>
+		<source-file src="src/android/MdParshub.jar" target-dir="libs" />
+    </platform>
+	
+</plugin>
